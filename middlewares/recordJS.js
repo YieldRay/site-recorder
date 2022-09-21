@@ -1,5 +1,5 @@
 const CONFIG = require("../config.js");
-const ENDPOINT = CONFIG.host + "record";
+const ENDPOINT = (CONFIG.host.endsWith("/") ? CONFIG.host : CONFIG.host + "/") + "record";
 module.exports = (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.send(
