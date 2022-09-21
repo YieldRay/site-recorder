@@ -1,0 +1,16 @@
+{
+    "name": "site-recorder",
+    "private": true,
+    "main": "server.js",
+    "type": "commonjs",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.18.1",
+        "mongodb": "^4.10.0",
+        "nanoid": "^4.0.0"
+    },
+    "devDependencies": {}
+}
