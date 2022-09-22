@@ -26,5 +26,6 @@ module.exports = (req, res) => {
         referer: req.body.ref,
         lang: req.body.lang,
         ua: req.headers["user-agent"],
+        ip: req.IP,
     });
 };

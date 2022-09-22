@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 router.use(express.urlencoded({ extended: false }));
 const db = require("../db/index");
+const CONFIG = require("../config");
 
 router.post("/login", async (req, res) => {
     const auth = req.body.pwd;
@@ -34,11 +35,31 @@ router.post("/reset", async (req, res) => {
     }
 });
 
-router.post("/query", async (req, res) => {
+/**
+ * TOKEN
+ */
+
+router.use(async (req, res, next) => {
     const token = req.headers.authorization;
     const permitions = await db.getPermitions(token);
-    //TODO
-    res.json(permitions);
+    req.permitions = permitions;
+    next();
+});
+router.post("/permistions", (req, res) => {
+    res.json(req.permitions);
+});
+router.post("/query", async (req, res) => {
+    const target = req.body.query;
+    const type = req.body.type;
+    if (!req.permitions.includes("*") && !req.permitions.includes(target)) {
+        res.json({ amount: 0, data: [] });
+        return;
+    }
+    if (type === "error") {
+        res.json(db.findAt(CONFIG.mongoDB.dbNames.error, target).match());
+    } else {
+        res.json(db.findAt(CONFIG.mongoDB.dbNames.record, target).match());
+    }
 });
 
 module.exports = router;

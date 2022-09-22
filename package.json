@@ -10,7 +10,7 @@
     "dependencies": {
         "express": "^4.18.1",
         "mongodb": "^4.10.0",
-        "nanoid": "^4.0.0"
-    },
-    "devDependencies": {}
+        "nanoid": "^4.0.0",
+        "request-ip": "^3.3.0"
+    }
 }

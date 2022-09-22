@@ -1,6 +1,8 @@
 module.exports = {
     port: process.env.PORT || 8080,
-    host: process.env.HOST || `https://${process.env.DETA_PATH}.deta.dev/` || "http://localhost:8080/",
+    host:
+        process.env.HOST ||
+        (process.env.DETA_PATH ? `https://${process.env.DETA_PATH}.deta.dev/` : "http://localhost:8080/"),
     mongoDB: {
         uri: process.env.MONGO_URI,
         dbNames: {
