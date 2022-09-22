@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     res.send(
         `Usage:
-<script type="text/javascript" src="${CONFIG.host}record.js" crossorigin></script>
-<script type="text/javascript" src="${CONFIG.host}error.js" crossorigin></script>`
+<script type="text/javascript" async src="${CONFIG.host}record.js" crossorigin></script>
+<script type="text/javascript" async src="${CONFIG.host}error.js" crossorigin></script>`
     );
 };
